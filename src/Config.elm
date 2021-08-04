@@ -7,11 +7,10 @@ import Html.Styled as Html exposing (Attribute, Html, a, button, div, form, h1, 
 import Html.Styled.Attributes exposing (css, for, href, id, name, placeholder, scope, type_, value)
 import Html.Styled.Events exposing (onClick, onInput, onSubmit)
 import Json.Decode as Decode exposing (Decoder)
-import Json.Decode.Pipeline exposing (required)
 import Json.Encode as Encode
 import Tailwind.Breakpoints as Bp
 import Tailwind.Utilities as Tw
-import Twitch exposing (log, receiveConfig, saveConfig)
+import Twitch exposing (Color, Config, Tool, decodeConfig, encodeConfig, log, receiveConfig, saveConfig)
 import UI exposing (Button(..), twButton)
 
 
@@ -28,97 +27,12 @@ type alias Model =
     }
 
 
-type alias Config =
-    { colors : List Color
-    , tools : List Tool
-    , selectedColors : List Color
-    }
-
-
-type alias Color =
-    { hex : String
-    , name : String
-    }
-
-
-type alias Tool =
-    { name : String
-    , url : String
-    }
-
-
 modelToConfig : Model -> Config
 modelToConfig model =
     { colors = model.colors
     , tools = model.tools
     , selectedColors = model.selectedColors
     }
-
-
-decodeConfig : Decoder Config
-decodeConfig =
-    Decode.succeed Config
-        |> required "colors" decodeColors
-        |> required "tools" decodeTools
-        |> required "selectedColors" decodeColors
-
-
-decodeColors : Decoder (List Color)
-decodeColors =
-    Decode.list decodeColor
-
-
-decodeTools : Decoder (List Tool)
-decodeTools =
-    Decode.list decodeTool
-
-
-decodeColor : Decoder Color
-decodeColor =
-    Decode.succeed Color
-        |> required "hex" Decode.string
-        |> required "name" Decode.string
-
-
-decodeTool : Decoder Tool
-decodeTool =
-    Decode.succeed Tool
-        |> required "name" Decode.string
-        |> required "url" Decode.string
-
-
-encodeConfig : Config -> Encode.Value
-encodeConfig config =
-    Encode.object
-        [ ( "colors", encodeColors <| config.colors )
-        , ( "tools", encodeTools <| config.tools )
-        ]
-
-
-encodeColors : List Color -> Encode.Value
-encodeColors colors =
-    Encode.list encodeColor colors
-
-
-encodeColor : Color -> Encode.Value
-encodeColor color =
-    Encode.object
-        [ ( "hex", Encode.string color.hex )
-        , ( "name", Encode.string color.name )
-        ]
-
-
-encodeTools : List Tool -> Encode.Value
-encodeTools tools =
-    Encode.list encodeTool tools
-
-
-encodeTool : Tool -> Encode.Value
-encodeTool tool =
-    Encode.object
-        [ ( "name", Encode.string tool.name )
-        , ( "url", Encode.string tool.url )
-        ]
 
 
 init : ( Model, Cmd Msg )
@@ -294,7 +208,7 @@ selectedColorTable model =
                                         , Tw.tracking_wider
                                         ]
                                     ]
-                                    [ text "Hex" ]
+                                    [ text "Color" ]
                                 , th
                                     [ scope "col"
                                     , css
@@ -583,7 +497,7 @@ colorsForm model =
                                             , Tw.tracking_wider
                                             ]
                                         ]
-                                        [ text "Hex" ]
+                                        [ text "Color" ]
                                     , th
                                         [ scope "col"
                                         , css
