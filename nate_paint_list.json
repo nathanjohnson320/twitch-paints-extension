@@ -25,6 +25,28 @@
       "orientation": "Portrait",
       "type": "config",
       "viewerType": "Broadcaster"
+    },
+    {
+      "channelId": "654081582",
+      "configurationAnchor": "component",
+      "displayChannelName": "paintbynate",
+      "features": {
+        "isBitsEnabled": false,
+        "isChatEnabled": false,
+        "isSubscriptionStatusAvailable": false
+      },
+      "frameSize": {
+        "width": 1280,
+        "height": 720
+      },
+      "id": "9",
+      "isPopout": false,
+      "label": "Viewer",
+      "linked": false,
+      "linkedUserId": "",
+      "orientation": "Portrait",
+      "type": "component",
+      "viewerType": "Logged-Out Viewer"
     }
   ],
   "manifest": {

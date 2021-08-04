@@ -80,6 +80,11 @@ update msg model =
 ---- VIEW ----
 
 
+sortedColors : Model -> List Color
+sortedColors model =
+    List.sortBy .name model.selectedColors
+
+
 colorTable : Model -> Html Msg
 colorTable model =
     div
@@ -104,9 +109,10 @@ colorTable model =
                 [ div
                     [ css
                         [ Tw.shadow
-                        , Tw.overflow_hidden
+                        , Tw.overflow_scroll
                         , Tw.border_b
                         , Tw.border_gray_200
+                        , Tw.h_screen
                         , Bp.sm
                             [ Tw.rounded_lg
                             ]
@@ -201,7 +207,7 @@ colorTable model =
                                             [ text color.name ]
                                         ]
                                 )
-                                model.selectedColors
+                                (sortedColors model)
                             )
                         ]
                     ]
