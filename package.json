@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "serve": "parcel watch ./*.html -d build/"
+    "serve": "parcel watch ./*.html -d build/",
+    "release": "NODE_ENV=production ./node_modules/.bin/parcel build ./*.html -d build/ --public-url . && cd build && zip nate_paint_list.zip ./*"
   },
   "dependencies": {
     "fastify": "^3.20.0",

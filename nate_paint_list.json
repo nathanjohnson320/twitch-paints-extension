@@ -17,53 +17,9 @@
         "width": 1280,
         "height": 720
       },
-      "id": "3",
+      "id": "8",
       "isPopout": false,
-      "label": "anonymous",
-      "linked": false,
-      "linkedUserId": "",
-      "orientation": "Portrait",
-      "type": "component",
-      "viewerType": "Logged-Out Viewer"
-    },
-    {
-      "channelId": "265737932",
-      "configurationAnchor": "component",
-      "displayChannelName": "paintbynate",
-      "features": {
-        "isBitsEnabled": false,
-        "isChatEnabled": false,
-        "isSubscriptionStatusAvailable": false
-      },
-      "frameSize": {
-        "width": 1280,
-        "height": 720
-      },
-      "id": "4",
-      "isPopout": false,
-      "label": "broadcaster",
-      "linked": false,
-      "linkedUserId": "",
-      "orientation": "Portrait",
-      "type": "component",
-      "viewerType": "Broadcaster"
-    },
-    {
-      "channelId": "654081582",
-      "configurationAnchor": "component",
-      "displayChannelName": "paintbynate",
-      "features": {
-        "isBitsEnabled": false,
-        "isChatEnabled": false,
-        "isSubscriptionStatusAvailable": false
-      },
-      "frameSize": {
-        "width": 1280,
-        "height": 720
-      },
-      "id": "5",
-      "isPopout": false,
-      "label": "broadcaster",
+      "label": "Config",
       "linked": true,
       "linkedUserId": "265737932",
       "orientation": "Portrait",

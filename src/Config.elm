@@ -3,11 +3,12 @@ module Config exposing (..)
 import Authentication exposing (Auth, authorization, decodeAuth, emptyAuth)
 import Browser
 import Css
-import Html.Styled as Html exposing (Attribute, Html, a, button, div, form, h1, input, label, span, table, tbody, td, text, th, thead, toUnstyled, tr)
-import Html.Styled.Attributes exposing (css, for, href, id, name, placeholder, scope, type_, value)
+import Html.Styled as Html exposing (Html, div, form, h1, input, label, span, table, tbody, td, text, th, thead, toUnstyled, tr)
+import Html.Styled.Attributes exposing (css, for, id, name, placeholder, scope, type_, value)
 import Html.Styled.Events exposing (onClick, onInput, onSubmit)
-import Json.Decode as Decode exposing (Decoder)
+import Json.Decode as Decode
 import Json.Encode as Encode
+import List.Extra
 import Tailwind.Breakpoints as Bp
 import Tailwind.Utilities as Tw
 import Twitch exposing (Color, Config, Tool, decodeConfig, encodeConfig, log, receiveConfig, saveConfig)
@@ -129,6 +130,7 @@ update msg model =
                     ( { model
                         | colors = config.colors
                         , tools = config.tools
+                        , selectedColors = config.selectedColors
                       }
                     , Cmd.none
                     )
@@ -368,6 +370,20 @@ formRow color =
         ]
 
 
+unselectedColors : Model -> List Color
+unselectedColors model =
+    List.filter
+        (\color ->
+            case List.Extra.find (\selected -> selected.name == color.name) model.selectedColors of
+                Just _ ->
+                    False
+
+                _ ->
+                    True
+        )
+        model.colors
+
+
 colorsForm : Model -> Html Msg
 colorsForm model =
     div []
@@ -535,7 +551,7 @@ colorsForm model =
                                     , Tw.divide_gray_200
                                     ]
                                 ]
-                                (List.map formRow model.colors)
+                                (List.map formRow <| unselectedColors model)
                             ]
                         ]
                     ]

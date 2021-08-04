@@ -61,6 +61,7 @@ encodeConfig config =
     Encode.object
         [ ( "colors", encodeColors <| config.colors )
         , ( "tools", encodeTools <| config.tools )
+        , ( "selectedColors", encodeColors <| config.selectedColors )
         ]
 
 

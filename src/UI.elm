@@ -2,7 +2,7 @@ module UI exposing (Button(..), twButton)
 
 import Css
 import Html.Styled exposing (Attribute, Html, button)
-import Html.Styled.Attributes exposing (css, type_)
+import Html.Styled.Attributes exposing (css)
 import Tailwind.Utilities as Tw
 
 

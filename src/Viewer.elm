@@ -3,7 +3,7 @@ module Viewer exposing (..)
 import Authentication exposing (Auth, authorization, decodeAuth, emptyAuth)
 import Browser
 import Css
-import Html.Styled exposing (Html, button, div, h1, table, tbody, td, text, th, thead, toUnstyled, tr)
+import Html.Styled exposing (Html, div, table, tbody, td, text, th, thead, toUnstyled, tr)
 import Html.Styled.Attributes exposing (css, scope)
 import Json.Decode as Decode
 import Json.Encode as Encode
@@ -132,7 +132,7 @@ colorTable model =
                                         [ Tw.px_6
                                         , Tw.py_3
                                         , Tw.text_left
-                                        , Tw.text_xs
+                                        , Tw.text_4xl
                                         , Tw.font_medium
                                         , Tw.text_gray_500
                                         , Tw.uppercase
@@ -147,7 +147,7 @@ colorTable model =
                                         [ Tw.px_6
                                         , Tw.py_3
                                         , Tw.text_left
-                                        , Tw.text_xs
+                                        , Tw.text_4xl
                                         , Tw.font_medium
                                         , Tw.text_gray_500
                                         , Tw.uppercase
@@ -172,7 +172,6 @@ colorTable model =
                                                 [ Tw.px_6
                                                 , Tw.py_4
                                                 , Tw.whitespace_nowrap
-                                                , Tw.text_sm
                                                 , Tw.font_medium
                                                 , Tw.text_gray_900
                                                 , Tw.flex
@@ -181,9 +180,9 @@ colorTable model =
                                             ]
                                             [ div
                                                 [ css
-                                                    [ Tw.w_8
-                                                    , Tw.h_8
-                                                    , Tw.border_black
+                                                    [ Tw.w_full
+                                                    , Tw.h_14
+                                                    , Tw.border_gray_300
                                                     , Tw.border_solid
                                                     , Css.backgroundColor <| Css.hex color.hex
                                                     ]
@@ -195,7 +194,7 @@ colorTable model =
                                                 [ Tw.px_6
                                                 , Tw.py_4
                                                 , Tw.whitespace_nowrap
-                                                , Tw.text_sm
+                                                , Tw.text_7xl
                                                 , Tw.text_gray_500
                                                 ]
                                             ]
